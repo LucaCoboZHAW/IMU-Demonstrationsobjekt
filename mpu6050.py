@@ -59,7 +59,7 @@ class MPU6050:
         if raw > 32767:                                    # + 32767 und -32768, + 1 zeichen für vorzeichen
             raw -= 65536                                   # 2**16 = 65536
 
-        acc = raw / 16384                              # 16bit = +- 32767 durch range 250° = 131 data points pro grad
+        acc = raw / 16384                              # 16bit = +- 32767 durch range 2g = 16384 data points pro grad
 
 
         return acc
@@ -72,7 +72,7 @@ class MPU6050:
         if raw > 32767:                                    # + 32767 und -32768, + 1 zeichen für vorzeichen
             raw -= 65536                                   # 2**16 = 65536
 
-        acc = raw / 16384                              # 16bit = +- 32767 durch range 250° = 131 data points pro grad
+        acc = raw / 16384                              # 16bit = +- 32767 durch range 2g = 16384 data points pro grad
 
 
         return acc
@@ -85,7 +85,7 @@ class MPU6050:
         if raw > 32767:                                    # + 32767 und -32768, + 1 zeichen für vorzeichen
             raw -= 65536                                   # 2**16 = 65536
 
-        acc = raw / 16384                              # 16bit = +- 32767 durch range 250° = 131 data points pro grad
+        acc = raw / 16384                              # 16bit = +- 32767 durch range 2g = 16384 data points pro grad
 
 
         return acc
