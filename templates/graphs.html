@@ -56,7 +56,7 @@
             currentData.bno.y = data.Yaw_B;
         });
 
-        // Chart.js Setup Funktion
+        // setup function
         const maxDataPoints = 100;
         function createChart(canvasId, title) {
             const ctx = document.getElementById(canvasId).getContext('2d');
@@ -82,26 +82,26 @@
             });
         }
 
-        // Charts initialisieren
+        // start der charts
         const chartRoll = createChart('chartRoll', 'Roll');
         const chartPitch = createChart('chartPitch', 'Pitch');
         const chartYaw = createChart('chartYaw', 'Yaw');
 
         // Charts mit 20 Hz aktualisieren (verhindert Browser-Absturz)
         setInterval(() => {
-            // Roll Update
+            // Roll
             chartRoll.data.datasets[0].data.shift(); chartRoll.data.datasets[0].data.push(currentData.kalman.r);
             chartRoll.data.datasets[1].data.shift(); chartRoll.data.datasets[1].data.push(currentData.komp.r);
             chartRoll.data.datasets[2].data.shift(); chartRoll.data.datasets[2].data.push(currentData.bno.r);
             chartRoll.update();
 
-            // Pitch Update
+            // Pitch
             chartPitch.data.datasets[0].data.shift(); chartPitch.data.datasets[0].data.push(currentData.kalman.p);
             chartPitch.data.datasets[1].data.shift(); chartPitch.data.datasets[1].data.push(currentData.komp.p);
             chartPitch.data.datasets[2].data.shift(); chartPitch.data.datasets[2].data.push(currentData.bno.p);
             chartPitch.update();
 
-            // Yaw Update
+            // Yaw
             chartYaw.data.datasets[0].data.shift(); chartYaw.data.datasets[0].data.push(currentData.kalman.y);
             chartYaw.data.datasets[1].data.shift(); chartYaw.data.datasets[1].data.push(currentData.komp.y);
             chartYaw.data.datasets[2].data.shift(); chartYaw.data.datasets[2].data.push(currentData.bno.y);
