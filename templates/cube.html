@@ -39,12 +39,12 @@
     <script>
         const socket = io();
 
-        // Funktion zur Erstellung einer 3D-Szene
+        // function der 3D-Szene
         function createScene(containerId) {
             const container = document.getElementById(containerId);
             const scene = new THREE.Scene();
             
-            // Kamera anpassen an Containeer
+            // kamera anpassung an container
             const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
             camera.position.z = 5;
 
@@ -52,7 +52,7 @@
             renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement);
 
-            // Quader erstellen
+            // quader erstellen
             const geometry = new THREE.BoxGeometry(2, 0.2, 3);
             const material = new THREE.MeshNormalMaterial(); // Bunte Flächen je nach Winkel
             const cube = new THREE.Mesh(geometry, material);
@@ -75,15 +75,13 @@
             return cube;
         }
 
-        // Szenen initialisieren
         const cubeKalman = createScene('canvas1');
         const cubeKomp = createScene('canvas2');
         const cubeBNO = createScene('canvas3');
-
-        // Hilfsfunktion: Grad in Bogenmass (Radiant) umrechnen
+n
         const deg2rad = Math.PI / 180;
 
-        // Socket Daten verarbeiten und auf Würfel anwenden
+  
         socket.on('sensor_data_kalman', data => {
             document.getElementById('roll_k').innerText = data.roll_kalman.toFixed(1);
             document.getElementById('pitch_k').innerText = data.pitch_kalman.toFixed(1);
